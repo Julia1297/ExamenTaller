@@ -1,6 +1,7 @@
 package com.ucbcba.demo.repository;
 
 import com.ucbcba.demo.Entities.City;
+import com.ucbcba.demo.Entities.Country;
 import com.ucbcba.demo.Entities.Restaurant;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -16,4 +17,7 @@ public interface RestaurantRepository extends CrudRepository<Restaurant,Integer>
 
     @Query("SELECT r from Restaurant r where r.city = :cityId")
     Iterable<Restaurant> getByCity(@Param("cityId") City cityId);
+
+    @Query("SELECT r from Restaurant r where r.city = :cityId AND r.city.country =:countryId")
+    Iterable<Restaurant> getByCityCountry(@Param("cityId") City cityId, @Param("countryId") Country countryId);
 }

@@ -41,7 +41,13 @@
                             <h1> TROFIMA </h1>
                             <div>
                                 <form style="display:flex" action="/search" method="get">
-                                <select id="id" name="id" style="width: 300px; color:orange" class="form-control" >
+                                    <select id="id" name="id" style="width: 300px; color:orange" class="form-control" >
+                                        <option style="color:orange"
+                                                th:each="country : ${countries}"
+                                                th:value="${country.id}"
+                                                th:text="${country.name}"></option>
+                                    </select>
+                                <select id="id1" name="id1" style="width: 300px; color:orange" class="form-control" >
                                     <option style="color:orange"
                                             th:each="city : ${cities}"
                                             th:value="${city.id}"

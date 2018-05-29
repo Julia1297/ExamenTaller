@@ -1,13 +1,11 @@
 package com.ucbcba.demo.Entities;
 
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-
 @Entity
-public class City {
+public class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -15,12 +13,8 @@ public class City {
     @NotNull
     private String name;
 
-    @OneToOne
-    @JoinColumn(name = "country_id")
-    private Country country;
-
-    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
-    private List<Restaurant> restaurants;
+    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
+    private List<City> cities;
 
     public String getName() {
         return name;
@@ -38,11 +32,11 @@ public class City {
         this.id = id;
     }
 
-    public List<Restaurant> getRestaurants() {
-        return restaurants;
+    public List<City> getCities() {
+        return cities;
     }
 
-    public void setRestaurants(List<Restaurant> restaurants) {
-        this.restaurants = restaurants;
+    public void setCities(List<City> cities) {
+        this.cities = cities;
     }
 }
